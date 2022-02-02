@@ -1,8 +1,6 @@
 #!/usr/bin/env groovy
-def url_name
 def call(String name = 'human') {
   echo "Hello, ${name}."
-  url_name =  $name
 
   pipeline {
     agent any
