@@ -11,7 +11,7 @@ def call(String name = 'human') {
         stage('URL Monitoring') {
             steps {
                 sh '''#!/bin/bash
-url= $url_name
+url= url_name
 attempts=2
 timeout=5
 online=false
