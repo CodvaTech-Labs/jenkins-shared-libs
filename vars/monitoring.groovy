@@ -1,7 +1,8 @@
 #!/usr/bin/env groovy
-
+def url_name
 def call(String name = 'human') {
   echo "Hello, ${name}."
+  url_name =  ${name}
 
   pipeline {
     agent any
@@ -10,7 +11,7 @@ def call(String name = 'human') {
         stage('URL Monitoring') {
             steps {
                 sh '''#!/bin/bash
-url= $name
+url= $url_name
 attempts=2
 timeout=5
 online=false
