@@ -2,8 +2,15 @@
 
 def call(String name = 'human') {
   echo "Hello, ${name}."
-  sh '''#!/bin/bash
-url=${name}
+
+  pipeline {
+    agent any
+
+    stages {
+        stage('URL Monitoring') {
+            steps {
+                sh '''#!/bin/bash
+url=\'https://dashboard.ctllearning.click/CrudDemoWithMySql/list\'
 attempts=2
 timeout=5
 online=false
@@ -33,4 +40,9 @@ else
   echo "Monitor failed, website seems to be down."
   exit 1
 fi'''
+            }
+        }
+    }
+}
+  
 }
